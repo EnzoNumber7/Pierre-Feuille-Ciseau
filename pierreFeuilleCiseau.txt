@@ -1,0 +1,68 @@
+#DEBUT
+#On admet une fonction Random qui choisi un chiffre aleatoire entre 1 et 3 inclus
+#On admet une fonction input qui recupère l'entré d'un joueur
+
+#Definir une fonction pierreFeuilleCiseau
+    #Afficher les choix possible 1(Pierre), 2(Feuille), 3(Ciseau)
+    #Initialiser une variable choixJoueur associer au choix du joueur grace à la fonction input
+    #Initialiser une variable choixOrdi associer la fonction Random qui tire un chiffre aleatoire entre 1 et 3
+
+    #Initialiser une variable nombreVictoire à 0
+    #Initialiser une variable nombreDefaite à 0
+    #Initialiser une variable nombreEgalite à 0
+    #Initialiser une variable nombrePartie à 0
+    #Initialiser une variable continuerPartie à True
+
+    #Tant que continuerPartie est True
+
+        #Alors si choixJoueur est égal à choixOrdi
+            #Alors afficher Egalité
+            #Incrementer la variable nombreEgalite de 1
+        
+        #Si choixJoueur est 1 et choixOrdi est 2
+            #Alors afficher choixJoueur et choixOrdi
+            #Afficher Défaite Joueur
+            #Incrementer la variable nombreDefaite de 1
+
+        #Sinon si choixJoueur est 1 et choixOrdi est 3
+            #Alors afficher choixJoueur et choixOrdi
+            #Afficher Victoire Joueur
+            #Incrementer la variable nombreVictoire de 1
+
+        #Sinon si choixJoueur est 2 et choixOrdi est 1
+            #Alors afficher choixJoueur et choixOrdi
+            #Afficher Victoire Joueur
+            #Incrementer la variable nombreVictoire de 1
+
+        #Sinon si choixJoueur est 2 et choixOrdi est 3
+            #Alors afficher choixJoueur et choixOrdi
+            #Afficher Défaite Joueur
+            #Incrementer la variable nombreDefaite de 1
+        
+        #Sinon si choixJoueur est 3 et choixOrdi est 1
+            #Alors afficher choixJoueur et choixOrdi
+            #Afficher Victoire Joueur
+            #Incrementer la variable nombreVictoire de 1
+
+        #Sinon si choixJoueur est 3 et choixOrdi est 2
+            #Alors afficher choixJoueur et choixOrdi
+            #Afficher Défaite Joueur
+            #Incrementer la variable nombreDefaite de 1
+
+        #Incrementer la variable nombrePartie de 1
+        
+        #Demander au joueur s'il veut de continuer grace à la fontion input
+        #Si la reponse est non
+            #Alors changer la variable continuerPartie à False
+        #Sinon 
+            #Afficher Votre nombre de partie est: nombrePartie
+            #Afficher Votre nombre de victoire est: nombreVictoire
+            #Afficher Votre nombre de Defaite est: nombreDefaite
+            #Afficher Votre nombre d'Egalité est: nombreEgalite
+
+    
+    #Afficher Votre nombre de partie est: nombrePartie
+    #Afficher Votre nombre de victoire est: nombreVictoire
+    #Afficher Votre nombre de Defaite est: nombreDefaite
+    #Afficher Votre nombre d'Egalité est: nombreEgalite
+FIN
