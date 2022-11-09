@@ -16,37 +16,37 @@
     #Tant que continuerPartie est True
 
         #Alors si choixJoueur est égal à choixOrdi
-            #Alors afficher Egalité
+            #Alors afficher "Egalité"
             #Incrementer la variable nombreEgalite de 1
         
         #Si choixJoueur est 1 et choixOrdi est 2
             #Alors afficher choixJoueur et choixOrdi
-            #Afficher Défaite Joueur
+            #Afficher "Défaite du Joueur"
             #Incrementer la variable nombreDefaite de 1
 
         #Sinon si choixJoueur est 1 et choixOrdi est 3
             #Alors afficher choixJoueur et choixOrdi
-            #Afficher Victoire Joueur
+            #Afficher "Victoire du Joueur"
             #Incrementer la variable nombreVictoire de 1
 
         #Sinon si choixJoueur est 2 et choixOrdi est 1
             #Alors afficher choixJoueur et choixOrdi
-            #Afficher Victoire Joueur
+            #Afficher "Victoire du Joueur"
             #Incrementer la variable nombreVictoire de 1
 
         #Sinon si choixJoueur est 2 et choixOrdi est 3
             #Alors afficher choixJoueur et choixOrdi
-            #Afficher Défaite Joueur
+            #Afficher "Défaite du Joueur"
             #Incrementer la variable nombreDefaite de 1
         
         #Sinon si choixJoueur est 3 et choixOrdi est 1
             #Alors afficher choixJoueur et choixOrdi
-            #Afficher Victoire Joueur
+            #Afficher "Victoire du Joueur"
             #Incrementer la variable nombreVictoire de 1
 
         #Sinon si choixJoueur est 3 et choixOrdi est 2
             #Alors afficher choixJoueur et choixOrdi
-            #Afficher Défaite Joueur
+            #Afficher "Défaite du Joueur"
             #Incrementer la variable nombreDefaite de 1
 
         #Incrementer la variable nombrePartie de 1
@@ -55,14 +55,14 @@
         #Si la reponse est non
             #Alors changer la variable continuerPartie à False
         #Sinon 
-            #Afficher Votre nombre de partie est: nombrePartie
-            #Afficher Votre nombre de victoire est: nombreVictoire
-            #Afficher Votre nombre de Defaite est: nombreDefaite
-            #Afficher Votre nombre d'Egalité est: nombreEgalite
+            #Afficher "Votre nombre de partie est:" nombrePartie
+            #Afficher "Votre nombre de victoire est:" nombreVictoire
+            #Afficher "Votre nombre de Defaite est:" nombreDefaite
+            #Afficher "Votre nombre d'Egalité est:" nombreEgalite
 
     
-    #Afficher Votre nombre de partie est: nombrePartie
-    #Afficher Votre nombre de victoire est: nombreVictoire
-    #Afficher Votre nombre de Defaite est: nombreDefaite
-    #Afficher Votre nombre d'Egalité est: nombreEgalite
+    #Afficher "Votre nombre de partie est:" nombrePartie
+    #Afficher "Votre nombre de victoire est:" nombreVictoire
+    #Afficher "Votre nombre de Defaite est:" nombreDefaite
+    #Afficher "Votre nombre d'Egalité est:" nombreEgalite
 FIN
