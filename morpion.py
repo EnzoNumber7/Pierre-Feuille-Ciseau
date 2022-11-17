@@ -85,7 +85,6 @@ def verification_CPU(tab,symbole):
             elif tab[i][j] == "_":
                 nbCaseVide += 1
                 ligneCaseVide,coloneCaseVide = i,j
-        
         #On verifie s'il y a 2 symbole et une case vide sur la meme ligne
         if nbSymbole == 2 and nbCaseVide == 1:
             #Si oui on renvoi Vrai, la ligne et la colone de la case vide
@@ -152,7 +151,7 @@ def verification_CPU(tab,symbole):
 
 
     #S'il y a le symbole en haut a gauche et en bas a droite ou au milieu à droite
-    if (tab[0][0] == symbole and (tab[2][2] == symbole or tab[1][2] == symbole ))  :
+    if (tab[0][0] == symbole and ( tab[1][2] == symbole ))  :
         #Alors si la case en haut au milieu est vide
         if tab[0][2] == "_":
             #Alors on retourne vrai et les coordoner de la case en haut au milieu
@@ -165,7 +164,7 @@ def verification_CPU(tab,symbole):
     #S'il y a le symbole en bas a droite et en haut au milieu ou en haut a gauche
     if tab[2][2] == symbole and tab[0][1] == symbole:
         #Si la case à droite au milieu est vide
-        if tab[1][2] == "_":
+        if tab[0][2] == "_":
              #Alors on retourne vrai et les coordonée de la case à droite au milieu
             return True,0,2
     #Sinon s'il y a le symbole dans la case en bas a droite et la case a gauche au milieu
@@ -194,28 +193,27 @@ def verification_CPU(tab,symbole):
     elif tab[0][2] == symbole and tab[2][1] == symbole:
         if tab[2][2] == "_":
             #Alors on retourne vrai et les coordonnés de la case en bas au milieu
-            return True,2,2
-    
-    #on cherche une diagonal vide 
-    if tab[0][0] == "_":
-        return True,0,0
-    elif tab[0][2] == "_":
-        return True,0,2
-    elif tab[2][0] == "_":
-        return True,2,0
-    elif tab[2][2] == "_":
-        return True,2,2
+            return True,2,2  
+    #Si les angles opposer sont le symbole
+    if tab[0][0] == symbole and tab[2][2] == symbole:
+        if tab[0][1] == "_":
+            return True,0,1
+        elif tab[1][2] == "_":
+            return True,1,2
+        elif tab[1][0] == "_":
+            return True,2,0
+        elif tab[2][1] == "_":
+            return True,2,1
+    if tab[2][0] == symbole and tab[0][2] == symbole:
+        if tab[0][1] == "_":
+            return True,0,1
+        elif tab[1][2] == "_":
+            return True,1,2
+        elif tab[1][0] == "_":
+            return True,2,0
+      
 
-    #On parcours le tableau pour trouver une case vide
-    for i in range(len(tab)):
-        for j in range(len(tab)):
-            #Si la case est vide
-            if tab[i][j] == "_":
-                #Alors on retourne vrai et les coordonné de la case vide
-                return True,i,j    
-
-    else:
-        return False,None,None
+    return False,None,None
 
     
 
@@ -317,7 +315,7 @@ def morpion_PVC():
     victoire = False
 
     #Determine qui commence entre le joueur_⭘ et le joueur_✖
-    tours = choice( ["✖"])
+    tours = choice( ["⭘","✖"])
     #Compte le nombre de tours de jeu
     nbTours = 0
     
@@ -356,8 +354,24 @@ def morpion_PVC():
             
         #Si c'est au tours du CPU
         if tours == "⭘":
+            #Si on est au 8ème ou 9ème tours
+            if nbTours == 9 or nbTours == 8 :
+                affichage_morpion(tableau)
+                #Alors, toute les cases ont été remplis et donc personne n'as gagner
+                print("Egalite, personne n'as gagner !")
+                break
+
+            #Si le tours est 0, c'est le tout premier tour de la partie donc le CPU commence
+            if nbTours == 0:
+                #Alors on se place dans la premiere case
+                tableau[0][0] = "⭘"
+                #On change de tours, on passe au joueur et on affiche le jeu
+                nbTours += 1
+                tours = "✖"
+                affichage_morpion(tableau)
+
             #Si c'est le premier tours du jeu, c'est à dire que le joueur a jouer en premier
-            if nbTours == 1:
+            elif nbTours == 1:
                 #Si la case central est vide
                 if tableau[1][1] == "_":
                     #Alors le CPU joue au milieu, on passe au tours suivant, celui du joueur
@@ -365,6 +379,7 @@ def morpion_PVC():
                     tours = "✖"
                     nbTours += 1
                     affichage_morpion(tableau)
+                
                 #Sinon le joueur à jouer sur la case central
                 else:
                     #Alors le CPU joue dans l'angle en bas à droite, on passe au tours suivant, celui du joueur
@@ -372,26 +387,69 @@ def morpion_PVC():
                     tours = "✖"
                     nbTours += 1
                     affichage_morpion(tableau)
+
+            #Si c'est le second tours de jeux
+            elif nbTours == 2 or nbTours == 4:
+                #On  verifie si le joueur peut gagner
+                verif = verification_CPU(tableau,"✖")
+                
+                if verif[0] == True:
+                    #Si oui, on le bloque
+                    tableau[verif[1]][verif[2]] = "⭘"
+                
+                else:
+                    #Si la case en bas a droite est vide on se place a cet endroit sino, on se place dans une autre diagonal
+                    if tableau[2][2] == "_":
+                        tableau[2][2] = "⭘"
+                    elif tableau[0][2] == "_":
+                        tableau[0][2] = "⭘"
+                    elif tableau[2][0] == "_":
+                        tableau[2][0] = "⭘"
+                
+                #On change de tours, on passe au joueur et on affiche le jeu
+                nbTours += 1
+                tours = "✖"
+                affichage_morpion(tableau)
+                
             #Si c'est apres le 2éme tours, donc le second tours du CPU
-            if nbTours >= 3 and nbTours < 9:
+            elif nbTours >= 3 and nbTours < 9:
                 #Alors on verifie les ligne, les colones et les diagonales via la fonction verification_CPU, pour le ⭘
                 verif = verification_CPU(tableau,"⭘")
                 #S'il n'y a pas 2 cercle sur la meme ligne colone diago
-                #S'il y a deux ⭘ et une case vide dans la meme ligne/colone/diago
-                if False in verif:
+                if verif[0] == False:
                     #Alors on verifie pour les ✖
                     verif = verification_CPU(tableau,"✖")
-                if True in verif:
+                #S'il y a deux ⭘/✖ et une case vide dans la meme ligne/colone/diago
+
+                if verif[0] == True:
                     #Alors on remplace dans le tableau le couple ligne/colone (donc le couple verif[1]/verif[2]) par un ⭘
                     tableau[verif[1]][verif[2]] = "⭘"
                     affichage_morpion(tableau)
                     tours = "✖"
                     nbTours += 1
-            if nbTours == 9 :
-                affichage_morpion(tableau)
-                #Alors, toute les cases ont été remplis et donc personne n'as gagner
-                print("Egalite, personne n'as gagner !")
-                break
+                #S'il n'y a pas 2 ✖/⭘ et une case vide dans une ligne/colone/diago
+                if verif[0] == False:
+                    #On verifie s'il y a une diagonal vide
+                    if tableau[0][0] == "_":
+                        tableau[0][0] = "⭘"
+                    elif tableau[0][2] == "_":
+                        tableau[0][2] == "⭘"
+                    elif tableau[2][0] == "_":
+                        tableau[2][0] = "⭘"
+                    elif tableau[2][2] == "_":
+                        tableau[2][2] = "⭘"
+                    
+                    #Sinon on cherche une case vide pour jouer
+                    else:
+                        for i in range(len(tableau)):
+                            for j in range(len(tableau)):
+                                if tableau[i][j] == "_":
+                                    tableau[i][j] = "⭘"
+                                    break
+                    #On change de tours, on passe au joueur et on affiche le jeu
+                    affichage_morpion(tableau)
+                    tours = "✖"
+                    nbTours += 1
 
                         
                     
@@ -400,12 +458,27 @@ def morpion_PVC():
             #S'il a gagner on arrete le jeu
             if victoire:
                 affichage_morpion(tableau)
-                print("\nVictoire Joueur_✖")
+                print("\nVictoire Ordinateur")
                 break
 
 
 
 
-            
+choix = 0
 
-morpion_PVC()
+while choix != "3":
+
+    print("Jeux du morpion")
+    print("1: Jouer contre un autre joueur")
+    print("2: Jouer contre l'ordinateur")
+    print("3: Arreter de jouer")
+
+    choix = input("")
+
+    if choix == "1":
+        morpion_PVP()
+
+    elif choix == "2":
+        morpion_PVC()
+
+print("A bientot")
