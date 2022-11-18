@@ -281,7 +281,7 @@ def morpion_PVP():
             if ligne > 2 or ligne < 0 or colone < 0 or colone > 2:
                 print("Erreur dans la saisi de la ligne ou de la colone")
             #S'il y a déjà un symbole sur le couple ligne colone choisi
-            if tableau[ligne][colone] == "⭘" or tableau[ligne][colone] == "✖":
+            elif tableau[ligne][colone] == "⭘" or tableau[ligne][colone] == "✖":
                 print("Erreur, la case à déjà été sélectionner")
             #Sinon on rajoute le symbole au tableau, et on passe au tours du joueur suivant
             else:
@@ -319,7 +319,7 @@ def morpion_PVP():
             if ligne > 2 or ligne < 0 or colone < 0 or colone > 2:
                 print("Erreur dans la saisi de la ligne ou de la colone")
             #S'il y a déjà un symbole sur le couple ligne colone choisi
-            if tableau[ligne][colone] == "⭘" or tableau[ligne][colone] == "✖":
+            elif tableau[ligne][colone] == "⭘" or tableau[ligne][colone] == "✖":
                 print("Erreur, la case à déjà été sélectionner")
             #Sinon on rajoute le symbole au tableau, et on passe au tours du joueur suivant
             else:
@@ -455,7 +455,6 @@ def morpion_PVO():
             elif nbTours >= 3 and nbTours < 9:
                 #Alors on verifie si l'ordinateur peut gagner grace à la fonction verification_CPU
                 verif = verification_CPU(tableau,"⭘")
-                print(verif,"---------------")
                 #S'il c'est faux, donc il ne peut pas gagner
                 if verif[0] == False:
                     #Alors on verifie pour le joueur
