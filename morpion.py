@@ -15,8 +15,8 @@ def affichage_morpion(tab):
 
 #Definir la fonction verification_victoire qui permet de verifier les condition de victoire du morpion, c'est à dire, 3 fois le meme symbole sur la meme diagonal/ligne/colone
 def verification_victoire(tab,symbole):
-    #Initialiser la variable nbSymbole à 0
-    nbSymbole = 0
+    #Initialiser la variable nbSymbole et col à 0
+    nbSymbole,col = 0,0
     #Verification des lignes
     for i in range(len(tab)):
         for j in range(len(tab)):
@@ -65,13 +65,13 @@ def verification_victoire(tab,symbole):
         nbSymbole = 0
 
     #Verification diagonal Bas-Gauche vers Haut-Droite
-    j=0
+    col=0
     for i in range(len(tab)-1,-1,-1):
         #S'il y a le symbole rechercher sur la case
-        if tab[i][j] == symbole:
+        if tab[i][col] == symbole:
             #Alors incrémenter la variable nbSymbole
             nbSymbole += 1
-        j += 1
+        col += 1
 
         #S'il y a 3 fois le symbole sur la diagonal
         if nbSymbole == 3:
@@ -155,11 +155,11 @@ def verification_CPU(tab,symbole):
     #Verification diagonal Bas-Gauche vers Haut-Droite
     for i in range(len(tab)-1,-1,-1):
         #S'il y a le symbole rechercher sur la case
-        if tab[i][j] == symbole:
+        if tab[i][col] == symbole:
             #Alors incrémenter la variable nbSymbole
             nbSymbole += 1
         #Sinon s'il y a une case vide, et on ajoute ses coordonné
-        elif tab[i][j] == "_":
+        elif tab[i][col] == "_":
             #Alors incrementer la variable nbCaseVide
             nbCaseVide += 1
             #Associer les variable ligneCaseVide et coloneCaseVide au coordoner de la case vide (i et j)
@@ -295,13 +295,13 @@ def morpion_PVP():
             if victoire:
                 affichage_morpion(tableau)
                 print("\nVictoire Joueur_✖")
-                break  
+                return 
             #Sino, s'il y a eu 9 tours
             elif nbTours == 9:
                 affichage_morpion(tableau)
                 #Alors, toute les cases ont été remplis et donc personne n'as gagner
                 print("Egalite, personne n'as gagner !")
-                break
+                return
 
             #Sinon on affiche l'etat actuel du morpion
             affichage_morpion(tableau)
@@ -333,14 +333,14 @@ def morpion_PVP():
             if victoire:
                 affichage_morpion(tableau)
                 print("Victoire Joueur_⭘")
-                break
+                return
             
             #Sinon, s'il y a eu 9 tours
             elif nbTours == 9:
                 affichage_morpion(tableau)
                 #Alors, toute les cases ont été remplis et donc personne n'as gagner
                 print("Egalite, personne n'as gagner !")
-                break
+                return
             
             #Sinon on affiche l'etat actuel du morpion
             affichage_morpion(tableau)
@@ -390,7 +390,7 @@ def morpion_PVO():
             if victoire:
                 affichage_morpion(tableau)
                 print("\nVictoire Joueur_✖")
-                break
+                return
             
             #Sinon on affiche l'etat actuel du morpion
             else:
@@ -486,7 +486,7 @@ def morpion_PVO():
                             for j in range(len(tableau)):
                                 if tableau[i][j] == "_":
                                     tableau[i][j] = "⭘"
-                                    break
+                                    return
                     #On change de tours, on passe au joueur et on affiche le jeu
                     affichage_morpion(tableau)
                     tours = "✖"
@@ -508,7 +508,7 @@ def morpion_PVO():
                 affichage_morpion(tableau)
                 #Alors, toute les cases ont été remplis et donc personne n'as gagner
                 print("Egalite, personne n'as gagner !")
-                break
+                return
 
                         
                     
@@ -518,7 +518,7 @@ def morpion_PVO():
             if victoire:
                 affichage_morpion(tableau)
                 print("\nVictoire Ordinateur")
-                break
+                return
 
 
 
