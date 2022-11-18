@@ -175,51 +175,53 @@ def verification_CPU(tab,symbole):
             nbSymbole,nbCaseVide,ligneCaseVide,coloneCaseVide= 0,0,0,0
 
 
-    #S'il y a le symbole dans la case de coordonnée 0,0 et  1,2
-    if tab[0][0] == symbole and tab[1][2] == symbole  :
+    #S'il y a une ✖ dans la case de coordonnée 0,0 et  1,2
+    if tab[0][0] == "✖" and tab[1][2] == "✖"  :
         #Alors si la case de coordonnée 0,2 est vide
         if tab[0][2] == "_":
             #Alors retourner vrai et les coordoner 0,2
             return True,0,2
     #Sinon s'il y a le symbole dans la case de coordonnée 0,0 et 2,1
-    elif tab[0][0] == symbole and tab[2][1] == symbole :
-        #Alors retourner vrai et les coordoner 2,0
-        return True,2,0
+    elif tab[0][0] == "✖" and tab[2][1] == "✖" :
+        #Alors si la case de coordonnée 2,0 est vide
+        if tab[2][0] == "_":
+            #Alors retourner vrai et les coordoner 2,0
+            return True,2,0
     
-    #S'il y a le symbole dans la case de coordonnée 2,2 et  0,1
-    if tab[2][2] == symbole and tab[0][1] == symbole:
+    #S'il y a une ✖ dans la case de coordonnée 2,2 et  0,1
+    if tab[2][2] == "✖" and tab[0][1] == "✖":
         #Alors si la case de coordonnée 0,2 est vide
         if tab[0][2] == "_":
              #Alors retourner vrai et les coordonée 0,2
             return True,0,2
-    #Sinon s'il y a le symbole dans la case de coordonnée 2,2 et 1,0
-    elif tab[2][2] == symbole and tab[1][0] == symbole:
+    #Sinon s'il y a une ✖ dans la case de coordonnée 2,2 et 1,0
+    elif tab[2][2] == "✖" and tab[1][0] == "✖":
         #Alors si la case de coordonnée 2,0 est vide
         if tab[2][0] == "_":
             #Alors retourner vrai et les coordonnés 2,0
             return True,2,0
     
-    #S'il y a le symbole dans la case de coordonnée 2,0 et  0,2 ou 0,1
-    if tab[2][0] == symbole and (tab[0][2] == symbole or tab[0][1] == symbole):
+    #S'il y a uen ✖ dans la case de coordonnée 2,0 et  0,2 ou 0,1
+    if tab[2][0] == "✖" and (tab[0][2] == "✖" or tab[0][1] == "✖"):
           #Alors si la case de coordonnée 0,0 est vide
         if tab[0][0] == "_":
             #Alors on retourne vrai et les coordonné 0,0
             return True,0,0
-    #Sinon s'il y a le symbole dans la case de coordonnée 2,0 et 1,2
-    elif tab[2][0] == symbole and tab[1][2] == symbole:
+    #Sinon s'il y a une ✖ dans la case de coordonnée 2,0 et 1,2
+    elif tab[2][0] == "✖" and tab[1][2] == "✖":
          #Alors si la case de coordonnée 2,2 est vide
         if tab[2][2] == "_":
             #Alors on retourne vrai et les coordonnés 2,2
             return True,2,2
     
-    #S'il y a le symbole dans la case de coordonnée 0,2 et  2,0 ou 1,0
-    if tab[0][2] == symbole and (tab[2][0] == symbole or tab[1][0] == symbole):
+    #S'il y a une ✖ dans la case de coordonnée 0,2 et  2,0 ou 1,0
+    if tab[0][2] == "✖" and (tab[2][0] == "✖" or tab[1][0] == "✖"):
          #Alors si la case de coordonnée 0,0 est vide
         if tab[0][0] == "_":
             #Alors on retourne vrai et les coordonné 0,0
             return True,0,0
-    #Sinon s'il y a le symbole dans la case de coordonnée 0,2 et 2,1
-    elif tab[0][2] == symbole and tab[2][1] == symbole:
+    #Sinon s'il y a une ✖ dans la case de coordonnée 0,2 et 2,1
+    elif tab[0][2] == "✖"  and tab[2][1] == "✖":
          #Alors si la case de coordonnée 2,2 est vide
         if tab[2][2] == "_":
             #Alors on retourne vrai et les coordonnés 2,2
@@ -233,7 +235,7 @@ def verification_CPU(tab,symbole):
         elif tab[1][2] == "_":
             return True,1,2
         elif tab[1][0] == "_":
-            return True,2,0
+            return True,1,0
         elif tab[2][1] == "_":
             return True,2,1
     if tab[2][0] == "✖" and tab[0][2] == "✖":
@@ -242,7 +244,7 @@ def verification_CPU(tab,symbole):
         elif tab[1][2] == "_":
             return True,1,2
         elif tab[1][0] == "_":
-            return True,2,0
+            return True,1,0
         elif tab[2][1] == "_":
             return True,2,1
       
@@ -374,7 +376,7 @@ def morpion_PVO():
             if ligne > 2 or ligne < 0 or colone < 0 or colone > 2:
                 print("Erreur dans la saisi de la ligne ou de la colone")
             #S'il y a déjà un symbole sur le couple ligne colone choisi
-            if tableau[ligne][colone] == "⭘" or tableau[ligne][colone] == "✖":
+            elif tableau[ligne][colone] == "⭘" or tableau[ligne][colone] == "✖":
                 print("Erreur, la case à déjà été sélectionner")
             #Sinon on rajoute le symbole au tableau, et on passe au tours suivant, celui du CPU
             else:
@@ -453,11 +455,11 @@ def morpion_PVO():
             elif nbTours >= 3 and nbTours < 9:
                 #Alors on verifie si l'ordinateur peut gagner grace à la fonction verification_CPU
                 verif = verification_CPU(tableau,"⭘")
+                print(verif,"---------------")
                 #S'il c'est faux, donc il ne peut pas gagner
                 if verif[0] == False:
                     #Alors on verifie pour le joueur
                     verif = verification_CPU(tableau,"✖")
-                
                 #S'il y a deux ⭘ ou ✖ et une case vide dans la meme ligne/colone/diago
                 if verif[0] == True:
                     #Alors on remplace dans le tableau le couple ligne/colone (donc le couple verif[1]/verif[2]) par un ⭘
@@ -472,7 +474,7 @@ def morpion_PVO():
                     if tableau[0][0] == "_":
                         tableau[0][0] = "⭘"
                     elif tableau[0][2] == "_":
-                        tableau[0][2] == "⭘"
+                        tableau[0][2] = "⭘"
                     elif tableau[2][0] == "_":
                         tableau[2][0] = "⭘"
                     elif tableau[2][2] == "_":
@@ -491,7 +493,8 @@ def morpion_PVO():
                     nbTours += 1
             
             #Si on est au 8ème ou 9ème tours
-            if nbTours == 9 or nbTours == 8 :
+            elif nbTours == 9 or nbTours == 8 :
+                print(nbTours)
                 #Si le nombre de tours est egale à 8
                 if nbTours == 8:
                     #Chercher la derniere case vide
