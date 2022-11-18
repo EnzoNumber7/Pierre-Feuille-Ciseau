@@ -1,28 +1,33 @@
 from random import*
 
-#Fonction qui permet d'afficher le morpion a joueur
+#Definir la fonction affichage_morpion qui permet d'afficher le jeux
 def affichage_morpion(tab):
+    #Afficher le numero des colone
     print("    0   1   2")
     for i in range(len(tab)):
+        #Afficher le numero des lignes
         print(i,"׀ ",end="")
+        #Afficher le contenue de chaque case ainsi que les séparation
         for j in range(len(tab[i])):
             print(tab[i][j], end=" ׀ ")
         print("\n")
 
 
-#Fonction qui permet de verifier les condition de victoire du morpion, c'est à dire, 3 fois le meme symbole sur la meme diagonal/ligne/colone
+#Definir la fonction verification_victoire qui permet de verifier les condition de victoire du morpion, c'est à dire, 3 fois le meme symbole sur la meme diagonal/ligne/colone
 def verification_victoire(tab,symbole):
+    #Initialiser la variable nbSymbole à 0
     nbSymbole = 0
     #Verification des lignes
     for i in range(len(tab)):
         for j in range(len(tab)):
             #Si il y a le symbole rechercher sur la case
             if tab[i][j] == symbole:
+                #Alors incrémenter la variable nbSymbole
                 nbSymbole += 1
         
-        #On verifie s'il y a 3 fois le symbole sur une ligne
+        #S'il y a 3 fois le même symbole sur une ligne
         if nbSymbole == 3:
-            #Si oui on a gagner
+            #Alors retourner Vrai
             return True
         else:
             #Sinon, on remet le compteur a 0 car on change de ligne
@@ -33,64 +38,74 @@ def verification_victoire(tab,symbole):
         for j in range(len(tab)):
             #Si il y a le symbole rechercher sur la case
             if tab[j][i] == symbole:
+                #Alors incrémenter la variable nbSymbole
                 nbSymbole += 1
                 
-        #On verifie s'il y a 3 fois le symbole sur une colone
+        #S'il y a 3 fois le symbole sur une colone
         if nbSymbole == 3:
-            #Si oui on a gagner
+            #Alors retourner Vrai
             return True
         else:
-            #Sinon, on remet le compteur a 0 car on change de colone
+            #Sinon, remettre le compteur a 0 car on change de colone
             nbSymbole = 0
 
     #Verification diagonal Haut-Gauche vers Bas Droite
     for i in range(len(tab)):
         #Si il y a le symbole rechercher sur la case
         if tab[i][i] == symbole:
+            #Alors incrémenter la variable nbSymbole
             nbSymbole += 1
     
-    #On verifie s'il y a 3 fois le symbole sur la diagonal
+    #S'il y a 3 fois le symbole sur la diagonal
     if nbSymbole == 3:
-        #Si oui on a gagner
+        #Alors retourner Vrai
         return True
     else:
-        #Sinon, on remet le compteur a 0 car on change de diagonal
+        #Sinon, remettre le compteur a 0 car on change de diagonal
         nbSymbole = 0
 
     #Verification diagonal Bas-Gauche vers Haut-Droite
     j=0
     for i in range(len(tab)-1,-1,-1):
+        #S'il y a le symbole rechercher sur la case
         if tab[i][j] == symbole:
+            #Alors incrémenter la variable nbSymbole
             nbSymbole += 1
         j += 1
 
-        #On verifie s'il y a 3 fois le symbole sur la diagonal
+        #S'il y a 3 fois le symbole sur la diagonal
         if nbSymbole == 3:
-            #Si oui on a gagner
+            #Alors retourner Vrai
             return True
 
-    #Si il n'y a aucune ligne/colone/diagonal, ou le joueur a 3 fois son symbole, alors on renvoie False
+    #Sinon, s'il n'y a aucune ligne/colone/diagonal, ou le joueur a 3 fois son symbole, alors renvoyer False
     return False
 
-#Une fonction qui verifie s'il y a 2 symbole et une case vide sur la meme ligne/colone    
+#Definir une fonction verification_CPU qui verifie toute les possibilité de jeux pour que l'ordi puisse réagir
 def verification_CPU(tab,symbole):
-    nbSymbole,nbCaseVide,ligneCaseVide,coloneCaseVide= 0,0,0,0
+    #Initialiser les variable nbSymbole, nbCaseVide, ligneCaseVide, coloneCaseVide et col
+    nbSymbole,nbCaseVide,ligneCaseVide,coloneCaseVide,col= 0,0,0,0,0
+    
     #Verification des lignes
     for i in range(len(tab)):
         for j in range(len(tab)):
             #Si il y a le symbole sur la ligne
             if tab[i][j] == symbole:
+                #Alors incrémenter la variable nbSymbole
                 nbSymbole += 1
             #Sinon s'il y a une case vide
             elif tab[i][j] == "_":
+                #Alors incrementer la variable nbCaseVide
                 nbCaseVide += 1
+                #Associer les variable ligneCaseVide et coloneCaseVide au coordoner de la case vide (i et j)
                 ligneCaseVide,coloneCaseVide = i,j
-        #On verifie s'il y a 2 symbole et une case vide sur la meme ligne
+        
+        #S'il y a 2 symbole et une case vide sur la meme ligne
         if nbSymbole == 2 and nbCaseVide == 1:
-            #Si oui on renvoi Vrai, la ligne et la colone de la case vide
+            #Renvoyer Vrai, la ligne et la colone de la case vide
             return True,ligneCaseVide,coloneCaseVide
         else:
-            #Sinon, on remet le compteur a 0 car on change de ligne
+            #Sinon, remettre les compteur a 0 car on change de ligne
             nbSymbole,nbCaseVide,ligneCaseVide,coloneCaseVide= 0,0,0,0
     
     #Verification des colones
@@ -98,55 +113,65 @@ def verification_CPU(tab,symbole):
         for j in range(len(tab)):
             #Si il y a le symbole sur la colone
             if tab[j][i] == symbole:
+                #Alors incrémenter la variable nbSymbole
                 nbSymbole += 1
             #Sinon s'il y a une case vide, et on ajoute ses coordonné
             elif tab[j][i] == "_":
+                #Alors incrementer la variable nbCaseVide
                 nbCaseVide += 1
+                #Associer les variable ligneCaseVide et coloneCaseVide au coordoner de la case vide (j et i)
                 ligneCaseVide,coloneCaseVide = j,i
                 
-        #On verifie s'il y a 2 fois le symbole et une case vide sur une colone
+        #S'il y a 2 fois le symbole et une case vide sur une colone
         if nbSymbole == 2 and nbCaseVide == 1:
-            #Si oui on renvoi Vrai, la ligne et la colone de la case vide
+            #Alors, renvoyer Vrai, la ligne et la colone de la case vide
             return True,ligneCaseVide,coloneCaseVide
         else:
-            #Sinon, on remet le compteur a 0 car on change de colone
+            #Sinon, remettre les compteur a 0 car on change de colone
             nbSymbole,nbCaseVide,ligneCaseVide,coloneCaseVide= 0,0,0,0
 
     
     #Verification de la diagonal haut gauche vers bas droite
     for i in range(len(tab)):
-        #Si il y a le symbole rechercher sur la case
+        #S'il y a le symbole rechercher sur la case
         if tab[i][i] == symbole:
+            #Alors incrémenter la variable nbSymbole
             nbSymbole += 1
         #Sinon s'il y a une case vide, et on ajoute ses coordonné
         elif tab[i][i] == "_":
+            #Alors incrementer la variable nbCaseVide
             nbCaseVide += 1
+            #Associer les variable ligneCaseVide et coloneCaseVide au coordoner de la case vide (i et i)
             ligneCaseVide,coloneCaseVide = i,i
     
-    #On verifie s'il y a 2 fois le symbole et une case vide sur la diagonal
+    #S'il y a 2 fois le symbole et une case vide sur la diagonal
     if nbSymbole == 2 and nbCaseVide == 1:
-        #Si oui on renvoi Vrai, la ligne et la colone de la case vide
+        #Alors, renvoyer Vrai, la ligne et la colone de la case vide
         return True,ligneCaseVide,coloneCaseVide
     else:
-        #Sinon, on remet le compteur a 0 car on change de diagonal
+        #Sinon, remettre les compteur a 0 car on change de diagonal
         nbSymbole,nbCaseVide,ligneCaseVide,coloneCaseVide= 0,0,0,0
     
     #Verification diagonal Bas-Gauche vers Haut-Droite
-    j=0
     for i in range(len(tab)-1,-1,-1):
+        #S'il y a le symbole rechercher sur la case
         if tab[i][j] == symbole:
+            #Alors incrémenter la variable nbSymbole
             nbSymbole += 1
+        #Sinon s'il y a une case vide, et on ajoute ses coordonné
         elif tab[i][j] == "_":
+            #Alors incrementer la variable nbCaseVide
             nbCaseVide += 1
+            #Associer les variable ligneCaseVide et coloneCaseVide au coordoner de la case vide (i et j)
             ligneCaseVide,coloneCaseVide = i,j
-        j += 1
+        col += 1
 
-        #On verifie s'il y a 2 fois le symbole et une case vide sur la diagonal
+        #S'il y a 2 fois le symbole et une case vide sur la diagonal
         if nbSymbole == 2 and nbCaseVide == 1:
-            #Si oui on a gagner
+            #Alors, renvoyer Vrai, la ligne et la colone de la case vide
             return True,ligneCaseVide,coloneCaseVide
         else:
-            #Sinon, on remet le compteur a 0 car on change de diagonal
+            #Sinon, remettre les compteur a 0 car on change de diagonal
             nbSymbole,nbCaseVide,ligneCaseVide,coloneCaseVide= 0,0,0,0
 
 
@@ -154,27 +179,29 @@ def verification_CPU(tab,symbole):
     if (tab[0][0] == symbole and ( tab[1][2] == symbole ))  :
         #Alors si la case en haut au milieu est vide
         if tab[0][2] == "_":
-            #Alors on retourne vrai et les coordoner de la case en haut au milieu
+            #Alors retourner vrai et les coordoner de la case en haut au milieu
             return True,0,2
     #Sinon s'il y a le symbole dans la case en haut a gauche et la case en bas au milieu
     elif tab[0][0] == symbole and tab[2][1] == symbole :
-        #Alors on retourne vrai et les coordoner de la case en haut au milieu
+        #Alors retourner vrai et les coordoner de la case en haut au milieu
         return True,2,0
     
     #S'il y a le symbole en bas a droite et en haut au milieu ou en haut a gauche
     if tab[2][2] == symbole and tab[0][1] == symbole:
         #Si la case à droite au milieu est vide
         if tab[0][2] == "_":
-             #Alors on retourne vrai et les coordonée de la case à droite au milieu
+             #Alors retourner vrai et les coordonée de la case à droite au milieu
             return True,0,2
     #Sinon s'il y a le symbole dans la case en bas a droite et la case a gauche au milieu
     elif tab[2][2] == symbole and tab[1][0] == symbole:
+         #Si la case en bas a gauche est vide
         if tab[2][0] == "_":
-            #Alors on retourne vrai et les coordonnés de la case en haut à gauche
+            #Alors retourner vrai et les coordonnés de la case en bas à gauche
             return True,2,0
     
     #S'il y a le symbole en bas à gauche et en haut à droite ou en haut au milieu
     if tab[2][0] == symbole and (tab[0][2] == symbole or tab[0][1] == symbole):
+         #Si la case en haut à gauche est vide
         if tab[0][0] == "_":
             #Alors on retourne vrai et les coordonné de la case au milieu à gauche
             return True,0,0
