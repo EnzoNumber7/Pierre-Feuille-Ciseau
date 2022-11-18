@@ -492,13 +492,15 @@ def morpion_PVO():
             
             #Si on est au 8ème ou 9ème tours
             if nbTours == 9 or nbTours == 8 :
-                #Chercher la derniere case vide
-                for i in range(len(tableau)):
-                            for j in range(len(tableau)):
-                                #Si la case est vide
-                                if tableau[i][j] == "_":
-                                    #on la remplace par un ⭘
-                                    tableau[i][j] = "⭘"
+                #Si le nombre de tours est egale à 8
+                if nbTours == 8:
+                    #Chercher la derniere case vide
+                    for i in range(len(tableau)):
+                                for j in range(len(tableau)):
+                                    #Si la case est vide
+                                    if tableau[i][j] == "_":
+                                        #on la remplace par un ⭘
+                                        tableau[i][j] = "⭘"
                                     
                 affichage_morpion(tableau)
                 #Alors, toute les cases ont été remplis et donc personne n'as gagner
