@@ -39,7 +39,7 @@ class Morpion(Tk):
         self.title("Plateau ")
  
         self.can = Canvas(self, width = 350, height = 350, bg = "white")
-        self.can.pack(padx = 10, pady = 10)
+        self.can.pack()
         self.tracer_plateau()
  
         self.bind("<Button>", self.analyser_position_clic)
@@ -131,7 +131,7 @@ class Morpion(Tk):
                 self.tracer_rond(self.x, self.y)
  
             self.changement_de_joueurs()
-            self.test_gagnant()
+
  
  
     def recommencer(self):
