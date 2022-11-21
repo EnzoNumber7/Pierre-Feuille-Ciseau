@@ -1,24 +1,40 @@
 from tkinter import *
 from tkinter import ttk
 
-root = Tk()
+window = Tk()
 
+def click_case(event):
+    if event.x > 0 and event.x <100 and event.y < 100 and event.y > 0:
+        return(50,50)
+    if event.x > 0 and event.x <100 and event.y < 200 and event.y > 100:
+        return(50,150)
+    if event.x > 0 and event.x <100 and event.y < 300 and event.y > 200:
+        return(50,250)
 
-canvas = Canvas(root, width=300, height=300)
+    if event.x > 100 and event.x <200 and event.y < 100 and event.y > 0:
+        return(150,50)
+    if event.x > 100 and event.x <200 and event.y < 200 and event.y > 100:
+        return(150,150)
+    if event.x > 100 and event.x <200 and event.y < 300 and event.y > 200:
+       return(150,250)
+
+    if event.x > 200 and event.x <300 and event.y < 100 and event.y > 0:
+        return(250,50)
+    if event.x > 200 and event.x <300 and event.y < 200 and event.y > 100:
+        return(250,150)
+    if event.x > 200 and event.x <300 and event.y < 300 and event.y > 200:
+        return(250,250)
+
+def place(symbol,coordonné):
+    txt = canvas.create_text(coordonné[0], coordonné[1], text=symbol, font="Arial 30", fill="black")
+
+window.geometry("300x300")
+
+canvas = Canvas(window, width=300, height=300)
+
+a=canvas.bind("<Button-1>",click_case)
+print(a)
 
 canvas.pack()
 
-case1 = canvas.create_rectangle(0, 0, 100, 100)
-case2 = canvas.create_rectangle(100, 0, 200, 100)
-case3 = canvas.create_rectangle(200, 0, 300, 100)
-
-case4 = canvas.create_rectangle(0, 100, 100, 200)
-case5 = canvas.create_rectangle(100, 100, 200, 200)
-case6 = canvas.create_rectangle(200, 100, 300, 200)
-
-case7 = canvas.create_rectangle(0, 200, 100, 300)
-case8 = canvas.create_rectangle(100, 200, 200, 300)
-case9 = canvas.create_rectangle(200, 200, 300, 300)
-
-Button(root, text ="pirate", relief=RAISED, cursor="pirate").pack()
-root.mainloop()
+window.mainloop()
