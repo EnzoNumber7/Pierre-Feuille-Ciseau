@@ -106,49 +106,49 @@ class Morpion(Tk):
             self.can.create_image(70,70,image=img)
             self.can.create_image(210,70,image=img)
             self.can.create_image(350,70,image=img)
-            return
+            self.victoire = True
  
         elif self.plateau[4] == self.plateau[5] == self.plateau[6] == symbole and self.plateau[4]!= 0:
             self.can.create_image(70,210,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(350,210,image=img)
-            return
+            self.victoire = True
 
         elif self.plateau[7] == self.plateau[8] == self.plateau[9] == symbole and self.plateau[7]!= 0:
             self.can.create_image(70,350,image=img)
             self.can.create_image(210,350,image=img)
             self.can.create_image(350,350,image=img)
-            return
+            self.victoire = True
 
         elif self.plateau[1] == self.plateau[5] == self.plateau[9] == symbole and self.plateau[1]!= 0:
             self.can.create_image(70,70,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(350,350,image=img)
-            return
+            self.victoire = True
 
         elif self.plateau[3] == self.plateau[5] == self.plateau[7] == symbole and self.plateau[3]!= 0:
             self.can.create_image(70,350,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(350,70,image=img)
-            return
+            self.victoire = True
 
         elif self.plateau[1] == self.plateau[4] == self.plateau[7] == symbole and self.plateau[1]!= 0:
             self.can.create_image(70,70,image=img)
             self.can.create_image(70,210,image=img)
             self.can.create_image(70,350,image=img)
-            return
+            self.victoire = True
 
         elif self.plateau[2] == self.plateau[5] == self.plateau[8] == symbole and self.plateau[2]!= 0:
             self.can.create_image(210,70,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(210,350,image=img)
-            return
+            self.victoire = True
 
         elif self.plateau[3] == self.plateau[6] == self.plateau[9] == symbole and self.plateau[3]!= 0:
             self.can.create_image(350,70,image=img)
             self.can.create_image(350,210,image=img)
             self.can.create_image(350,350,image=img)
-            return
+            self.victoire = True
 
  
 
