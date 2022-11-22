@@ -7,9 +7,10 @@ class Morpion(Tk):
         Tk.__init__(self)
         self.title("Plateau ")
  
-        self.can = Canvas(self, width = 420, height = 420, bg = "white")
+        self.can = Canvas(self, width = 420, height = 420)
         self.can.pack()
         self.tracer_plateau()
+        self.croix_image = PhotoImage(file='Morpion\img\croix.png')
 
         self.bind("<Button>", self.analyser_position_clic)
 
@@ -29,8 +30,7 @@ class Morpion(Tk):
         self.can.create_line(20, 280, 400, 280, width = 4)
 
     def tracer_croix(self, x, y):
-        croix_image = PhotoImage(file='Morpion\img\croix.png')
-        self.can.create_image(x,y,image=croix_image)
+        self.can.create_image(100,100,image=self.croix_image)
  
     def tracer_rond(self, x, y):
         self.can.create_text(x,y,text="⭘",font="Arial 50 bold")
