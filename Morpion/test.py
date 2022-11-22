@@ -35,8 +35,8 @@ class Morpion(Tk):
         self.can.create_line(20, 140, 400, 140, width = 4)
         self.can.create_line(20, 280, 400, 280, width = 4)
 
-        self.can.create_text(140,550,text="Victoire Joueur X: "+str(self.Joueur1Win),font="Arial 10 bold")
-        self.can.create_text(280,550,text="Victoire Joueur O: "+str(self.Joueur2Win),font="Arial 10 bold")
+        j1 = self.can.create_text(140,550,text="Victoire Joueur X: "+str(self.Joueur1Win),font="Arial 10 bold")
+        j2 = self.can.create_text(280,550,text="Victoire Joueur O: "+str(self.Joueur2Win),font="Arial 10 bold")
 
     def tracer_croix(self, x, y):
         self.can.create_image(x,y,image=self.croix_image)
@@ -100,69 +100,64 @@ class Morpion(Tk):
                 if self.joueur == 1:
                     self.plateau[i] = "✖"
                     self.tracer_croix(self.x, self.y)
-                    self.test_gagnant("✖",self.croixWin_image,self.Joueur1Win)
+                    self.test_gagnant("✖",self.croixWin_image)
                 else:
                     self.plateau[i] = "⭘"
                     self.tracer_rond(self.x, self.y)
-                    self.test_gagnant("⭘",self.cercleWin_image,self.Joueur2Win)
+                    self.test_gagnant("⭘",self.cercleWin_image)
                 self.changement_de_joueurs()
 
-    def test_gagnant(self,symbole,img,joueur):
+    def test_gagnant(self,symbole,img):
         if self.plateau[1] == self.plateau[2] == self.plateau[3] == symbole and self.plateau[1]!= 0:
             self.can.create_image(70,70,image=img)
             self.can.create_image(210,70,image=img)
             self.can.create_image(350,70,image=img)
             self.victoire = True
-            joueur += 1
+            if symbole == "✖":
+                self.Joueur1Win += 1
+            self.affichage()
  
         elif self.plateau[4] == self.plateau[5] == self.plateau[6] == symbole and self.plateau[4]!= 0:
             self.can.create_image(70,210,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(350,210,image=img)
             self.victoire = True
-            joueur += 1
 
         elif self.plateau[7] == self.plateau[8] == self.plateau[9] == symbole and self.plateau[7]!= 0:
             self.can.create_image(70,350,image=img)
             self.can.create_image(210,350,image=img)
             self.can.create_image(350,350,image=img)
             self.victoire = True
-            joueur += 1
 
         elif self.plateau[1] == self.plateau[5] == self.plateau[9] == symbole and self.plateau[1]!= 0:
             self.can.create_image(70,70,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(350,350,image=img)
             self.victoire = True
-            joueur += 1
 
         elif self.plateau[3] == self.plateau[5] == self.plateau[7] == symbole and self.plateau[3]!= 0:
             self.can.create_image(70,350,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(350,70,image=img)
             self.victoire = True
-            joueur += 1
 
         elif self.plateau[1] == self.plateau[4] == self.plateau[7] == symbole and self.plateau[1]!= 0:
             self.can.create_image(70,70,image=img)
             self.can.create_image(70,210,image=img)
             self.can.create_image(70,350,image=img)
             self.victoire = True
-            joueur += 1
 
         elif self.plateau[2] == self.plateau[5] == self.plateau[8] == symbole and self.plateau[2]!= 0:
             self.can.create_image(210,70,image=img)
             self.can.create_image(210,210,image=img)
             self.can.create_image(210,350,image=img)
             self.victoire = True
-            joueur += 1
 
         elif self.plateau[3] == self.plateau[6] == self.plateau[9] == symbole and self.plateau[3]!= 0:
             self.can.create_image(350,70,image=img)
             self.can.create_image(350,210,image=img)
             self.can.create_image(350,350,image=img)
             self.victoire = True
-            joueur += 1
 
  
 
