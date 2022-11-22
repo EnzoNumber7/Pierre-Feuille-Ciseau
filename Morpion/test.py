@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 #création grille
 class Morpion(Tk):
@@ -28,7 +29,8 @@ class Morpion(Tk):
         self.can.create_line(20, 280, 400, 280, width = 4)
 
     def tracer_croix(self, x, y):
-        self.can.create_text(x,y,text="✖",font="Arial 40 italic")
+        croix_image = PhotoImage(file='Morpion\img\croix.png')
+        self.can.create_image(x,y,image=croix_image)
  
     def tracer_rond(self, x, y):
         self.can.create_text(x,y,text="⭘",font="Arial 50 bold")
