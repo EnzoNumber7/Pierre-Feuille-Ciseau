@@ -92,96 +92,63 @@ class Morpion(Tk):
             if self.joueur == 1:
                 self.plateau[i] = "✖"
                 self.tracer_croix(self.x, self.y)
-                self.test_gagnant("✖")
+                self.test_gagnant("✖",self.croixWin_image)
             else:
                 self.plateau[i] = "⭘"
                 self.tracer_rond(self.x, self.y)
-                self.test_gagnant("⭘")
+                self.test_gagnant("⭘",self.cercleWin_image)
             self.changement_de_joueurs()
 
-    def test_gagnant(self,symbole):
+    def test_gagnant(self,symbole,img):
         if self.plateau[1] == self.plateau[2] == self.plateau[3] == symbole and self.plateau[1]!= 0:
-            if symbole == "✖":
-                self.can.create_image(70,70,image=self.croixWin_image)
-                self.can.create_image(210,70,image=self.croixWin_image)
-                self.can.create_image(350,70,image=self.croixWin_image)
-            else:
-                self.can.create_image(70,70,image=self.cercleWin_image)
-                self.can.create_image(210,70,image=self.cercleWin_image)
-                self.can.create_image(350,70,image=self.cercleWin_image)
+            self.can.create_image(70,70,image=img)
+            self.can.create_image(210,70,image=img)
+            self.can.create_image(350,70,image=img)
+            return
  
         elif self.plateau[4] == self.plateau[5] == self.plateau[6] == symbole and self.plateau[4]!= 0:
-            if symbole == "✖":
-                self.can.create_image(70,210,image=self.croixWin_image)
-                self.can.create_image(210,210,image=self.croixWin_image)
-                self.can.create_image(350,210,image=self.croixWin_image)
-            else:
-                self.can.create_image(70,210,image=self.cercleWin_image)
-                self.can.create_image(210,210,image=self.cercleWin_image)
-                self.can.create_image(350,210,image=self.cercleWin_image)
+            self.can.create_image(70,210,image=img)
+            self.can.create_image(210,210,image=img)
+            self.can.create_image(350,210,image=img)
+            return
 
         elif self.plateau[7] == self.plateau[8] == self.plateau[9] == symbole and self.plateau[7]!= 0:
-            if symbole == "✖":
-                self.can.create_image(70,350,image=self.croixWin_image)
-                self.can.create_image(210,350,image=self.croixWin_image)
-                self.can.create_image(350,350,image=self.croixWin_image)
-            else:
-                self.can.create_image(70,350,image=self.cercleWin_image)
-                self.can.create_image(210,350,image=self.cercleWin_image)
-                self.can.create_image(350,350,image=self.cercleWin_image)
+            self.can.create_image(70,350,image=img)
+            self.can.create_image(210,350,image=img)
+            self.can.create_image(350,350,image=img)
+            return
 
         elif self.plateau[1] == self.plateau[5] == self.plateau[9] == symbole and self.plateau[1]!= 0:
-            if symbole == "✖":
-                self.can.create_image(70,70,image=self.croixWin_image)
-                self.can.create_image(210,210,image=self.croixWin_image)
-                self.can.create_image(350,350,image=self.croixWin_image)
-            else:
-                self.can.create_image(70,70,image=self.cercleWin_image)
-                self.can.create_image(210,210,image=self.cercleWin_image)
-                self.can.create_image(350,350,image=self.cercleWin_image)
+            self.can.create_image(70,70,image=img)
+            self.can.create_image(210,210,image=img)
+            self.can.create_image(350,350,image=img)
+            return
 
         elif self.plateau[3] == self.plateau[5] == self.plateau[7] == symbole and self.plateau[3]!= 0:
-            if symbole == "✖":
-                self.can.create_image(70,350,image=self.croixWin_image)
-                self.can.create_image(210,210,image=self.croixWin_image)
-                self.can.create_image(350,70,image=self.croixWin_image)
-            else:
-                self.can.create_image(70,350,image=self.cercleWin_image)
-                self.can.create_image(210,210,image=self.cercleWin_image)
-                self.can.create_image(350,70,image=self.cercleWin_image)
+            self.can.create_image(70,350,image=img)
+            self.can.create_image(210,210,image=img)
+            self.can.create_image(350,70,image=img)
+            return
 
         elif self.plateau[1] == self.plateau[4] == self.plateau[7] == symbole and self.plateau[1]!= 0:
-            if symbole == "✖":
-                self.can.create_image(70,70,image=self.croixWin_image)
-                self.can.create_image(70,210,image=self.croixWin_image)
-                self.can.create_image(70,350,image=self.croixWin_image)
-            else:
-                self.can.create_image(70,70,image=self.cercleWin_image)
-                self.can.create_image(70,210,image=self.cercleWin_image)
-                self.can.create_image(70,350,image=self.cercleWin_image)
+            self.can.create_image(70,70,image=img)
+            self.can.create_image(70,210,image=img)
+            self.can.create_image(70,350,image=img)
+            return
 
         elif self.plateau[2] == self.plateau[5] == self.plateau[8] == symbole and self.plateau[2]!= 0:
-            if symbole == "✖":
-                self.can.create_image(210,70,image=self.croixWin_image)
-                self.can.create_image(210,210,image=self.croixWin_image)
-                self.can.create_image(210,350,image=self.croixWin_image)
-            else:
-                self.can.create_image(210,70,image=self.cercleWin_image)
-                self.can.create_image(210,210,image=self.cercleWin_image)
-                self.can.create_image(210,350,image=self.cercleWin_image)
+            self.can.create_image(210,70,image=img)
+            self.can.create_image(210,210,image=img)
+            self.can.create_image(210,350,image=img)
+            return
 
         elif self.plateau[3] == self.plateau[6] == self.plateau[9] == symbole and self.plateau[3]!= 0:
-            if symbole == "✖":
-                self.can.create_image(350,70,image=self.croixWin_image)
-                self.can.create_image(350,210,image=self.croixWin_image)
-                self.can.create_image(350,350,image=self.croixWin_image)
-            else:
-                self.can.create_image(350,70,image=self.cercleWin_image)
-                self.can.create_image(350,210,image=self.cercleWin_image)
-                self.can.create_image(350,350,image=self.cercleWin_image)
+            self.can.create_image(350,70,image=img)
+            self.can.create_image(350,210,image=img)
+            self.can.create_image(350,350,image=img)
+            return
 
  
 
-if __name__ == "__main__":
-    fenetre = Morpion()
+fenetre = Morpion()
 fenetre.mainloop()
