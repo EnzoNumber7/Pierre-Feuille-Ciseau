@@ -11,8 +11,10 @@ class Morpion(Tk):
         self.can.pack()
         self.tracer_plateau()
         self.croix_image = PhotoImage(file='Morpion\img\croix.png')
+        self.cercle_image = PhotoImage(file='Morpion\img\cercle.png')
 
         self.bind("<Button>", self.analyser_position_clic)
+        self.bind("<Motion>",print)
 
         self.plateau = [0] * 10
         self.joueur = 1
@@ -30,10 +32,10 @@ class Morpion(Tk):
         self.can.create_line(20, 280, 400, 280, width = 4)
 
     def tracer_croix(self, x, y):
-        self.can.create_image(100,100,image=self.croix_image)
+        self.can.create_image(x,y,image=self.croix_image)
  
     def tracer_rond(self, x, y):
-        self.can.create_text(x,y,text="⭘",font="Arial 50 bold")
+        self.can.create_image(x,y,image=self.cercle_image)
 
 
     
@@ -49,21 +51,21 @@ class Morpion(Tk):
             if event.x > 20 and event.x < 140:
                 if event.y > 20 and event.y < 140:
                     i = 1
-                    self.x = 60
-                    self.y = 60
+                    self.x = 70
+                    self.y = 70
                 if event.y > 140 and event.y < 280:
                     i = 4
-                    self.x = 60
+                    self.x = 70
                     self.y = 210
                 if event.y > 280 and event.y < 400:
                     i = 7
-                    self.x = 60
+                    self.x = 70
                     self.y = 350
             elif event.x > 140 and event.x < 280:
                 if event.y > 20 and event.y < 140:
                     i = 2
                     self.x = 210
-                    self.y = 60
+                    self.y = 70
                 if event.y > 140 and event.y < 280:
                     i = 5
                     self.x = 210
@@ -76,7 +78,7 @@ class Morpion(Tk):
                 if event.y > 20 and event.y < 140:
                     i = 3
                     self.x = 350
-                    self.y = 60
+                    self.y = 70
                 if event.y > 140 and event.y < 280:
                     i = 6
                     self.x = 350
