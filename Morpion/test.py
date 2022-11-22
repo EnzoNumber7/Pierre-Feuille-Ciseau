@@ -18,6 +18,7 @@ class Morpion(Tk):
         self.bind("<Button>", self.analyser_position_clic)
         self.plateau = [0] * 10
         self.joueur = 1
+        self.victoire = False
  
     def changement_de_joueurs(self):
         if self.joueur == 1: 
@@ -47,57 +48,58 @@ class Morpion(Tk):
         # - + - + -
         # 7 | 8 | 9 
  
-        if self.plateau[0] == 0:
-            if event.x > 20 and event.x < 140:
-                if event.y > 20 and event.y < 140:
-                    i = 1
-                    self.x = 70
-                    self.y = 70
-                if event.y > 140 and event.y < 280:
-                    i = 4
-                    self.x = 70
-                    self.y = 210
-                if event.y > 280 and event.y < 400:
-                    i = 7
-                    self.x = 70
-                    self.y = 350
-            elif event.x > 140 and event.x < 280:
-                if event.y > 20 and event.y < 140:
-                    i = 2
-                    self.x = 210
-                    self.y = 70
-                if event.y > 140 and event.y < 280:
-                    i = 5
-                    self.x = 210
-                    self.y = 210
-                if event.y > 280 and event.y < 400:
-                    i = 8
-                    self.x = 210
-                    self.y = 350
-            elif event.x > 280 and event.x < 400:
-                if event.y > 20 and event.y < 140:
-                    i = 3
-                    self.x = 350
-                    self.y = 70
-                if event.y > 140 and event.y < 280:
-                    i = 6
-                    self.x = 350
-                    self.y = 210
-                if event.y > 280 and event.y < 400:
-                    i = 9
-                    self.x = 350
-                    self.y = 350
- 
-        if self.plateau[i] == 0:
-            if self.joueur == 1:
-                self.plateau[i] = "✖"
-                self.tracer_croix(self.x, self.y)
-                self.test_gagnant("✖",self.croixWin_image)
-            else:
-                self.plateau[i] = "⭘"
-                self.tracer_rond(self.x, self.y)
-                self.test_gagnant("⭘",self.cercleWin_image)
-            self.changement_de_joueurs()
+        if self.victoire == False:
+            if self.plateau[0] == 0:
+                if event.x > 20 and event.x < 140:
+                    if event.y > 20 and event.y < 140:
+                        i = 1
+                        self.x = 70
+                        self.y = 70
+                    if event.y > 140 and event.y < 280:
+                        i = 4
+                        self.x = 70
+                        self.y = 210
+                    if event.y > 280 and event.y < 400:
+                        i = 7
+                        self.x = 70
+                        self.y = 350
+                elif event.x > 140 and event.x < 280:
+                    if event.y > 20 and event.y < 140:
+                        i = 2
+                        self.x = 210
+                        self.y = 70
+                    if event.y > 140 and event.y < 280:
+                        i = 5
+                        self.x = 210
+                        self.y = 210
+                    if event.y > 280 and event.y < 400:
+                        i = 8
+                        self.x = 210
+                        self.y = 350
+                elif event.x > 280 and event.x < 400:
+                    if event.y > 20 and event.y < 140:
+                        i = 3
+                        self.x = 350
+                        self.y = 70
+                    if event.y > 140 and event.y < 280:
+                        i = 6
+                        self.x = 350
+                        self.y = 210
+                    if event.y > 280 and event.y < 400:
+                        i = 9
+                        self.x = 350
+                        self.y = 350
+    
+            if self.plateau[i] == 0:
+                if self.joueur == 1:
+                    self.plateau[i] = "✖"
+                    self.tracer_croix(self.x, self.y)
+                    self.test_gagnant("✖",self.croixWin_image)
+                else:
+                    self.plateau[i] = "⭘"
+                    self.tracer_rond(self.x, self.y)
+                    self.test_gagnant("⭘",self.cercleWin_image)
+                self.changement_de_joueurs()
 
     def test_gagnant(self,symbole,img):
         if self.plateau[1] == self.plateau[2] == self.plateau[3] == symbole and self.plateau[1]!= 0:
