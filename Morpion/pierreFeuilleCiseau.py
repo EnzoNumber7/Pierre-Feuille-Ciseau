@@ -138,7 +138,4 @@ def pierreFeuilleCiseau():
     #Afficher "Votre nombre d'Egalité est:" nombreEgalite
     print("Votre nombre d'Egalité est:", nombreEgalite)
 
-
-pierreFeuilleCiseau()
-
 #FIN

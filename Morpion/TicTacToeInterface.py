@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import ttk
+
 
 #création grille
 class Morpion(Tk):
