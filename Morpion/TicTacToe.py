@@ -151,6 +151,7 @@ def victory_verification(tab,symbol):
         for j in range(len(tab)):
             #Si il y a le symbole rechercher sur la case
             if tab[i][j] == symbol:
+                print("________",i,j)
                 #Alors incrémenter la variable nbSymbole
                 nbSymbol += 1
         
@@ -539,7 +540,13 @@ def TicTacToe_PVC():
                                     
                 print_game(tab)
                 #Alors, toute les cases ont été remplis et donc personne n'as gagner
-                print("It's a Tie, nobody win \n\n\n")
+                print("It's a Tie, nobody win")
+
+                # Easter egg pierre feuille ciseau
+                print("Do you want a winner ?")
+                c = input("")
+                if c == "yes":
+                    pierreFeuilleCiseau()
                 return
 
                         
