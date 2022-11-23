@@ -38,7 +38,7 @@ def pierreFeuilleCiseau():
             #Alors afficher choixJoueur et choixOrdi
             print("\nPierre Contre Feuille")
             #Afficher "Défaite du Joueur"
-            print("Défaiter du joueur")
+            print("Défaite du joueur")
             #Incrementer la variable nombreDefaite de 1
             nombreDefaite += 1
             #Incrementer la variable nombrePartie de 1

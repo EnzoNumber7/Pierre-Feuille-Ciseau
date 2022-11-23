@@ -1,5 +1,5 @@
 from random import*
-from Morpion.pierreFeuilleCiseau import *
+from pierreFeuilleCiseau import *
 
 #Definir la fonction affichage_morpion qui permet d'afficher le jeux
 def print_game(tab):
@@ -131,7 +131,6 @@ def didWin(player, who, tab, symbol, turn) :
         print_game(tab)
         #Afficher le message d'égalité
         print("It's over ! It's a tie !")
-        pierreFeuilleCiseau()
         return True
     #Sinon si a est sur True
     elif a :
