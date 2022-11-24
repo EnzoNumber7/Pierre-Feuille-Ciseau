@@ -14,6 +14,7 @@ def RockPaperScissor():
         #Alors afficher "Egalité"
         print("\nIt's a tie... Again\n")
         print("¯\_(ツ)_/\n")
+        print("It's probably the destiny.... ")
        
     #Si choixJoueur est 1 et choixOrdi est 2
     elif choixJoueur == 1 and choixOrdi == 2:

@@ -13,13 +13,15 @@ def print_game(tab):
             print(tab[i][j], end=" ׀ ")
         print("\n")
 
+
+
 #On crée une fonction ticTacToe
 def TicTacToe_PVP() :
     #Initialisation du tableau de morpion
     tab=[["_","_","_"],["_","_","_"],["_","_","_"]]
     print_game(tab)
 
-    #Initialisation des vartiable turn et who a 0
+    #Initialisation des variable turn et who a 0
     turn=0
     who=0
 
@@ -40,6 +42,8 @@ def TicTacToe_PVP() :
     player_choice(player, who, tab, turn)
     #On termine la fonction
     return
+
+
 
 #On crée la fonction player_choice qui prend comme argument player, who et case
 def player_choice(player, who, tab, turn):
@@ -95,6 +99,8 @@ def player_choice(player, who, tab, turn):
 
         #Appeler la fonction player_choice
         player_choice(player, who, tab, turn)
+
+
 
 #On crée la fonction didWin qui prend comme paramètres player, who, case et symbol
 def didWin(player, who, tab, symbol, turn) :
@@ -152,6 +158,7 @@ def didWin(player, who, tab, symbol, turn) :
         #Afficher le gagnant de la partie
         print("It's over !\033[1;31;40m", player[who], "\033[1;37;40mwon the game !\n\n\n")
         return True
+
 
 
 
@@ -222,6 +229,8 @@ def victory_verification(tab,symbol):
 
     #Sinon, s'il n'y a aucune ligne/colone/diagonal, ou le joueur a 3 fois son symbole, alors renvoyer False
     return False
+
+
 
 #Definir une fonction verification_CPU qui verifie toute les possibilité de jeux pour que l'ordi puisse réagir
 def CPU_verification(tab,symbol):
@@ -370,17 +379,8 @@ def CPU_verification(tab,symbol):
             return True,2,2  
     
     #Si les angles opposer sont des ✖
-    if tab[0][0] == "✖" and tab[2][2] == "✖":
+    if (tab[0][0] == "✖" and tab[2][2] == "✖") or (tab[2][0] == "✖" and tab[0][2] == "✖"):
         #Alors si les cases au milieu de chaque coté sont vides
-        if tab[0][1] == "_":
-            return True,0,1
-        elif tab[1][2] == "_":
-            return True,1,2
-        elif tab[1][0] == "_":
-            return True,1,0
-        elif tab[2][1] == "_":
-            return True,2,1
-    if tab[2][0] == "✖" and tab[0][2] == "✖":
         if tab[0][1] == "_":
             return True,0,1
         elif tab[1][2] == "_":
@@ -394,7 +394,8 @@ def CPU_verification(tab,symbol):
     return False,None,None
 
 
-#Definir la fonction morpion_PVO qui permet de faire une partie de morpion contre l'ordinateur
+
+#Definir la fonction TicTacToe_PVC qui permet de faire une partie de morpion contre l'ordinateur
 def TicTacToe_PVC():
     # Création du tableau de morpion
     tab=[["_","_","_"],["_","_","_"],["_","_","_"]]
