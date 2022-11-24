@@ -19,48 +19,48 @@ def pierreFeuilleCiseau():
     #Si choixJoueur est 1 et choixOrdi est 2
     elif choixJoueur == 1 and choixOrdi == 2:
         #Alors afficher choixJoueur et choixOrdi
-        print("\nPierre Contre Feuille")
+        print("\nRock vs Paper")
         #Afficher "Défaite du Joueur"
-        print("Défaite du joueur")
+        print("Player lose")
 
     #Sinon si choixJoueur est 1 et choixOrdi est 3
     elif choixJoueur == 1 and choixOrdi == 3:
         #Alors afficher choixJoueur et choixOrdi
-        print("\nPierre Contre Ciseau")
+        print("\nRock vs Scissor")
         #Afficher "Victoire du Joueur"
-        print("Victoire du Joueur")
+        print("Player win")
 
     #Sinon si choixJoueur est 2 et choixOrdi est 1
     elif choixJoueur == 2 and choixOrdi == 1:
         #Alors afficher choixJoueur et choixOrdi
-        print("\nFeuille Contre Pierre")
+        print("\nPaper vs Rock")
         #Afficher "Victoire du Joueur"
-        print("Victoire Joueur")
+        print("Player win")
 
     #Sinon si choixJoueur est 2 et choixOrdi est 3
     elif choixJoueur == 2 and choixOrdi ==3:
         #Alors afficher choixJoueur et choixOrdi
-        print("\nFeuille Contre Ciseau")
+        print("\nPaper vs Scissor")
         #Afficher "Défaite du Joueur"
-        print("Défaite du joueur")
+        print("Player lose")
         
     #Sinon si choixJoueur est 3 et choixOrdi est 1
     elif choixJoueur == 3 and choixOrdi == 2:
         #Alors afficher choixJoueur et choixOrdi
-        print("\nCiseau Contre Feuille")
+        print("\nScissor vs Paper")
         #Afficher "Victoire du Joueur"
-        print("Victoire du joueur")
+        print("Player win")
 
 
     #Sinon si choixJoueur est 3 et choixOrdi est 2
     elif choixJoueur == 3 and choixOrdi == 1:
         #Alors afficher choixJoueur et choixOrdi
-        print("\nCiseau Contre Pierre")
+        print("\nScissor vs Rock")
         #Afficher "Défaite du Joueur"
-        print("Défaite du joueur")
+        print("Player lose")
 
     else:
-        print("Erreur, vous n'avez pas rentrez un choix valide")
+        print("Wrong choice, chose the number 1,2 or 3")
 
 
 #FIN
