@@ -137,6 +137,13 @@ def didWin(player, who, tab, symbol, turn) :
         print_game(tab)
         #Afficher le message d'égalité
         print("It's over ! It's a tie !")
+        
+        # Easter egg pierre feuille ciseau
+        print("Do you want a winner ?")
+        c = input("")
+        if c == "yes":
+            RockPaperScissor()
+
         return True
     #Sinon si a est sur True
     elif a :
@@ -584,7 +591,7 @@ gameChoice = ""
 while gameChoice != "3":
 
     #On affiche les choix possible pour le joueur
-    print("Play TicTacToe")
+    print("\nPlay TicTacToe")
     print("1: Play Player versus Player")
     print("2: Play Player versus CPU")
     print("3: Stop playing")
