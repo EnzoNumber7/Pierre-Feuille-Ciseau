@@ -2,7 +2,7 @@
 from random import *
 
 #Definir une fonction pierreFeuilleCiseau
-def pierreFeuilleCiseau():
+def RockPaperScissor():
     #Afficher les choix possible 1(Pierre), 2(Feuille), 3(Ciseau)
     print("Chose a number, 1 for Rock, 2 for Scissor, 3 for Paper")
     #Assigner a choixJoueur le choix du joueur grace à la fonction input
