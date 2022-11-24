@@ -56,6 +56,12 @@ def player_choice(player, who, tab, turn):
     column = input("Chose a column: ")
     case = (line,column)
 
+    #Si le joueur repond "non" lorsqu'on lui demande de choisir une ligne ou une colone
+    if line.upper() == "NO" or column.upper() == "NO":
+        #Alors on quitte le programme
+        print("ok................................")
+        exit()
+
     #Tant que le choix du joueur est différent d'une des cases du morpion ou que la case est déjà pleine
     while case != ("0","0") and case != ("0","1") and case != ("0","2") and case != ("1","0") and case != ("1","1") and case != ("1","2") and case != ("2","0") and case != ("2","1") and case != ("2","2") or (tab[int(line)][int(column)] == symbol[0] or tab[int(line)][int(column)] == symbol[1]):
         #On appel la fonction printer
@@ -401,10 +407,20 @@ def TicTacToe_PVC():
         if turn == "✖":
             #Demande au joueur de choisir une ligne
             print("Player_✖ chose a line: ")
-            line = int(input(""))
+            line = input("")
             #Demande au joueur de choisir une colone
             print("\nPlayer_✖ chose a column: ")
-            column = int(input(""))
+            column = input("")
+
+            #Si le joueur repond "non" lorsqu'on lui demande de choisir une ligne ou une colone
+            if line.upper() == "NO" or column.upper() == "NO":
+                #Alors on quitte le programme
+                print("ok................................")
+                exit()
+            
+            # line et column deviennent des entier
+            line = int(line)
+            column = int(column)
             
             #Si la ligne ou la colone ne sont pas presente dans le tableau
             if line > 2 or line < 0 or column < 0 or column > 2:
@@ -545,7 +561,7 @@ def TicTacToe_PVC():
                 print("Do you want a winner ?")
                 c = input("")
                 if c == "yes":
-                    RockPaperScissor()()
+                    RockPaperScissor()
                 return
 
                         
